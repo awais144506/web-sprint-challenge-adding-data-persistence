@@ -1,15 +1,14 @@
 //Import Files
 const express = require('express')
 const projectRouter = require('./project/router')
+const resourceRouter = require('./resource/router')
+const taskRouter = require('./task/router')
 //Server Invoke Express
 const server = express()
 //Server Use
 server.use(express.json())
-server.use('/api/projects',projectRouter)
-
-server.get('/',(req,res)=>{
-    res.send("Hello Buddy I am Live Now !!!!")
-})
-
-
+server.use('/api/projects', projectRouter)
+server.use('/api/resources', resourceRouter)
+server.use('/api/tasks', taskRouter)
+//Server Export 
 module.exports = server

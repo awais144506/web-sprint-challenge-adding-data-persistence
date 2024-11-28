@@ -13,7 +13,7 @@ exports.up = async function (knex) {
     })
     await knex.schema.createTable('resources', table => {
         table.increments('resource_id')
-        table.string('resource_name')
+        table.string('resource_name').unique()
         table.string('resource_description')
     })
     await knex.schema.createTable('tasks', table => {
@@ -28,8 +28,8 @@ exports.up = async function (knex) {
             .notNullable()
             .references('project_id')
             .inTable('projects')
-            .onDelete('RESTRICT')
-            .onUpdate('RESTRICT')
+            .onDelete('CASCADE')
+            .onUpdate('CASCADE')
     })
 };
 

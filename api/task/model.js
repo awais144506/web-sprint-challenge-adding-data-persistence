@@ -1,1 +1,2 @@
-// build your `Task` model here
+//import DB
+const db = require('../../data/dbConfig')
